@@ -1,19 +1,19 @@
 import * as React from "react";
 import {
-//   DndContext,
-  //   DragOverlay,
-//   closestCorners,
+  DndContext,
+    // DragOverlay,
+  closestCorners,
   useSensor,
   useSensors,
-  //   DragStartEvent,
+    // DragStartEvent,
   DragOverEvent,
-  //   DragEndEvent,
+    // DragEndEvent,
   UniqueIdentifier,
   TouchSensor,
   MouseSensor,
   KeyboardSensor,
 } from "@dnd-kit/core";
-import { Container, Item } from "../components/article3/dnd-content";
+// import { Container, Item } from "../components/article3/dnd-content";
 // import { arrayMove } from "@dnd-kit/sortable";
 // import { Container, Item } from '../components/article3/dnd-content'
 
@@ -30,7 +30,7 @@ export default function UserPage() {
     selected: [],
   });
 
-  //   const [activeId, setActiveId] = React.useState<UniqueIdentifier | null>(null);
+    // const [activeId, setActiveId] = React.useState<UniqueIdentifier | null>(null);
 
   // キーボード操作に対するセンサー
   const keyboardSensor = useSensor(KeyboardSensor);
@@ -41,16 +41,16 @@ export default function UserPage() {
     },
   });
   // タッチ操作に対するセンサー
-//   const touchSensor = useSensor(TouchSensor, {
-//     activationConstraint: {
-//       // delay：どのくらい遅延させるかの数値
-//       delay: 50,
-//       // 10px以内の移動は許容
-//       tolerance: 10,
-//     },
-//   });
+  const touchSensor = useSensor(TouchSensor, {
+    activationConstraint: {
+      // delay：どのくらい遅延させるかの数値
+      delay: 50,
+      // 10px以内の移動は許容
+      tolerance: 10,
+    },
+  });
   // DndContextの下に効かせるsensorを宣言
-//   const sensors = useSensors(mouseSensor, touchSensor, keyboardSensor);
+  const sensors = useSensors(mouseSensor, touchSensor, keyboardSensor);
 
   // コンテナの取得関数(SortableContextのバリュー位置が変わったときに動いている)
   // idがどのコンテナに含まれているかfindしている。idが見つからなかったらundefinedを返している
@@ -66,12 +66,12 @@ export default function UserPage() {
   };
 
   // ドロップ要素を持ち上げたときに実行
-  //   const handleDragStart = (event: DragStartEvent) => {
-  //     // eventオブジェクトからactiveプロパティを取り出している
-  //     const { active } = event;
-  //     const { id } = active;
-  //     setActiveId(id);
-  //   };
+    // const handleDragStart = (event: DragStartEvent) => {
+    //   // eventオブジェクトからactiveプロパティを取り出している
+    //   const { active } = event;
+    //   const { id } = active;
+    //   setActiveId(id);
+    // };
 
   // 要素と被った時に発生
   const handleDragOver = (event: DragOverEvent) => {
@@ -157,67 +157,67 @@ export default function UserPage() {
     });
   };
 
-  //   const handleDragEnd = (event: DragEndEvent) => {
-  //     // プロパティを取り出してidに代入
-  //     const { active, over } = event;
-  //     const { id } = active;
-  //     const overId = over?.id;
+    // const handleDragEnd = (event: DragEndEvent) => {
+    //   // プロパティを取り出してidに代入
+    //   const { active, over } = event;
+    //   const { id } = active;
+    //   const overId = over?.id;
 
-  //     if (!overId) return;
+    //   if (!overId) return;
 
-  //     // findContainerの中からそれぞれのidを探せ
-  //     const activeContainer = findContainer(id);
-  //     const overContainer = findContainer(overId);
+    //   // findContainerの中からそれぞれのidを探せ
+    //   const activeContainer = findContainer(id);
+    //   const overContainer = findContainer(overId);
 
-  //     // idが存在しないor 動かそうとしてるidと置こうとしてるidが一緒だったら、強制終了
-  //     if (
-  //       !activeContainer ||
-  //       !overContainer ||
-  //       activeContainer !== overContainer
-  //     ) {
-  //       return;
-  //     }
+    //   // idが存在しないor 動かそうとしてるidと置こうとしてるidが一緒だったら、強制終了
+    //   if (
+    //     !activeContainer ||
+    //     !overContainer ||
+    //     activeContainer !== overContainer
+    //   ) {
+    //     return;
+    //   }
 
-  //     // stringをnumberに変換
-  //     const activeIndex = items[activeContainer].indexOf(id as string);
-  //     const overIndex = items[overContainer].indexOf(overId as string);
+    //   // stringをnumberに変換
+    //   const activeIndex = items[activeContainer].indexOf(id as string);
+    //   const overIndex = items[overContainer].indexOf(overId as string);
 
-  //     // 動かす要素idが置く要素idと一致しなかったら
-  //     if (activeIndex !== overIndex) {
-  //       setItems((items) => ({
-  //         ...items,
-  //         // overContainerのidを更新している
-  //         [overContainer]: arrayMove(
-  //           items[overContainer],
-  //           activeIndex,
-  //           overIndex
-  //         ),
-  //       }));
-  //     }
-  //     setActiveId(null);
-  //   };
+    //   // 動かす要素idが置く要素idと一致しなかったら
+    //   if (activeIndex !== overIndex) {
+    //     setItems((items) => ({
+    //       ...items,
+    //       // overContainerのidを更新している
+    //       [overContainer]: arrayMove(
+    //         items[overContainer],
+    //         activeIndex,
+    //         overIndex
+    //       ),
+    //     }));
+    //   }
+    //   setActiveId(null);
+    // };
   // arrayMove:sortableが提供するプロパティ。下のように要素を入れ替える
   // arrayMove(配列,old配列番号,new配列番号)
 
   return (
     <>
-      {/* <div style={{ display: "flex", flexDirection: "row" }}> */}
-      {/* <DndContext
+      <div style={{ display: "flex", flexDirection: "row" }}>
+      <DndContext
         sensors={sensors} // DndContextでラップしてるコンポーネントに対してsensorを付与
         collisionDetection={closestCorners}
         // onDragStart={handleDragStart}
         onDragOver={handleDragOver} // ドラック要素がドロップ要素の上を通過する際、発火
         // onDragEnd={handleDragEnd}
-      > */}
+      >
       {/* <Container id="unsupported" items={items.unsupported} />
         <Container id="accepted" items={items.accepted} />
         <Container id="selection" items={items.selection} />
         <Container id="selected" items={items.selected} />
-        <DragOverlay>{activeId ? <Item id={activeId} /> : null}</DragOverlay> */}
+        <DragOverlay>{activeId ? <Item id={activeId} /> : null}</DragOverlay>
       <Container />
-      <Item />
-      {/* </DndContext> */}
-      {/* </div> */}
+      <Item /> */}
+      </DndContext>
+      </div>
     </>
   );
 }
