@@ -13,6 +13,7 @@ import {
   MouseSensor,
   KeyboardSensor,
 } from "@dnd-kit/core";
+import { Link } from "react-router-dom";
 // import { Container, Item } from "../components/article3/dnd-content";
 // import { arrayMove } from "@dnd-kit/sortable";
 // import { Container, Item } from '../components/article3/dnd-content'
@@ -21,7 +22,7 @@ type Items = {
   [key: string]: string[];
 };
 
-export default function UserPage() {
+export default function DndExamplePage() {
   // ドラック要素の状態
   const [items, setItems] = React.useState<Items>({
     unsupported: ["1", "2", "3"], // 1などが、sortableItem、rootがコンテナの塊
@@ -201,6 +202,7 @@ export default function UserPage() {
 
   return (
     <>
+    <Link to="/" children={"home"} />
       <div style={{ display: "flex", flexDirection: "row" }}>
       <DndContext
         sensors={sensors} // DndContextでラップしてるコンポーネントに対してsensorを付与
