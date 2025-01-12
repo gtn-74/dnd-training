@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
-import FooButton from "../components/article-1,2/foo-button";
-import HoggButton from "../components/article-1,2/hoge-button";
+import FooButton from "../features/article-1,2/foo-button";
+import HoggButton from "../features/article-1,2/hoge-button";
 
 export default function Article12page() {
   const params: number = 444;
