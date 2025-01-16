@@ -1,8 +1,8 @@
 import { Project, SyntaxKind } from "ts-morph";
 
 // キャメルケースからスネークケースに変換する関数
-function toSnakeCase(camelCase: string): string {
-  return camelCase.replace(/([a-z])([A-Z])/g, "$1_$2").toLowerCase();
+function toSnakeCase(snake_case: string): string {
+  return snake_case.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
 }
 
 // ts-morph プロジェクトを作成
