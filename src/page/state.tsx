@@ -3,9 +3,10 @@
 import { Link } from "react-router-dom";
 import {
   ContextType,
-  useCreateStoreContext,
+  // useCreateStoreContext,
   useSelector,
-} from "../store/useSyncExternalStore";
+} from "../hooks/useSyncExternalStore";
+import { useGlobalStore } from "../provider/StorePrivider";
 
 // コンポーネントに渡す型を定義
 interface StateType {
@@ -59,11 +60,13 @@ const Buttons = ({ context }: { context: ContextType<StateType> }) => {
 
 export default function StatePage() {
   // ここから渡してる値が:initState。つまりa,b,c
-  const context = useCreateStoreContext<StateType>(() => ({
-    a: 0,
-    b: 10,
-    c: 100,
-  }));
+  // const context = useCreateStoreContext<StateType>(() => ({
+  //   a: 0,
+  //   b: 10,
+  //   c: 100,
+  // }));
+  const context = useGlobalStore()
+  
   return (
     <div>
       <A context={context} />
